@@ -32,7 +32,7 @@ Compute the Kling-Gupta efficiency (2009).
       squared error and NSE performance criteria: Implications for improving hydrological modelling.
       Journal of Hydrology, 377(1-2), 80-91.
 """
-function kge_2009(simulated_array::AbstractVector{T}, observed_array::AbstractVector{T}; kwargs...)
+function kge_2009(simulated_array::AbstractVector{T}, observed_array::AbstractVector{T}; kwargs...) where {T}
     s = get(kwargs, :s, (1, 1, 1))
 
     # Means

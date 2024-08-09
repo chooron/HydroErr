@@ -2,6 +2,10 @@ module HydroErr
 using Statistics
 using DocStringExtensions
 
-greet() = print("Hello World!")
 
-end # module HydroErr
+files = filter(x -> endswith(x, ".jl"), readdir(pwd() * "\\src\\functions", join=true))
+
+for file in files
+    include(file)
+end
+end
