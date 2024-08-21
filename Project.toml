@@ -1,4 +1,4 @@
-name = "HydroErr"
+name = "HydroErrors"
 uuid = "cde335eb-da38-4796-83c8-e508648b3902"
 authors = ["jingx <50790703+chooron@users.noreply.github.com>"]
 version = "0.1.0"

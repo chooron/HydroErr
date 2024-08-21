@@ -1,4 +1,4 @@
-module HydroErr
+module HydroErrors
 using Statistics
 using DocStringExtensions
 
