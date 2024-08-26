@@ -1,34 +1,39 @@
 @doc """
+Compute the mean error of the simulated and observed data.
 
- Compute the mean squared error of the simulated and observed data.
- 
- .. image:: /pictures/MSE.png
- 
- **Range:** 0 ≤ MSE < inf, data units squared, smaller is better.
- 
- **Notes:** Random errors do not cancel, highlights larger errors, also referred to as a
- squared L2-norm.
+    .. image:: /pictures/ME.png
 
- $(TYPEDSIGNATURES)
+    **Range:** -inf < MAE < inf, data units, closer to zero is better, indicates bias.
 
- Parameters
- ----------
- simulated_array: one dimensional ndarray
-     An array of simulated data from the time series.
+    **Notes:** The mean error (ME) measures the difference between the simulated data and the
+    observed data. For the mean error, a smaller number indicates a better fit to the original
+    data. Note that if the error is in the form of random noise, the mean error will be very small,
+    which can skew the accuracy of this metric. ME is cumulative and will be small even if there
+    are large positive and negative errors that balance.
+
+    Parameters
+    ----------
+    simulated_array: one dimensional ndarray
+        An array of simulated data from the time series.
+
+    observed_array: one dimensional ndarray
+        An array of observed data from the time series.
+
+    Returns
+    -------
+    float
+        The mean error value.
+
+    Examples
+    --------
+    Note that in this example the random noise cancels, leaving a very small ME.
  
- observed_array: one dimensional ndarray
-     An array of observed data from the time series.
- 
- Returns
- -------
- float
-     The mean squared error value.
- 
- References
- ----------
- - Wang, Zhou, and Alan C. Bovik. “Mean Squared Error: Love It or Leave It? A New Look at Signal
-     Fidelity Measures.” IEEE Signal Processing Magazine 26, no. 1 (2009): 98–117.
+    References
+    ----------
+    - Fisher, R.A., 1920. A Mathematical Examination of the Methods of Determining the Accuracy of
+      an Observation by the Mean Error, and by the Mean Square Error. Monthly Notices of the Royal
+      Astronomical Society 80 758 - 770.
  """
-function me(simulated_array::AbstractVector{T}, observed_array::AbstractVector{T}; kwargs...)::T where {T}
+function me(simulated_array::AbstractVector, observed_array::AbstractVector; kwargs...)
     mean(simulated_array .- observed_array)
 end
