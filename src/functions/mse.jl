@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-function mse(simulated_array::AbstractVector, observed_array::AbstractVector; kwargs...)
-    sum((observed_array .- simulated_array) .^ (2)) / length(observed_array)
-=======
 @doc """
 Compute the mean squared error of the simulated and observed data.
 
@@ -32,5 +28,4 @@ Compute the mean squared error of the simulated and observed data.
  """
 function mse(simulated_array::AbstractVector{T}, observed_array::AbstractVector{T}; kwargs...)::T where {T}
     mean((simulated_array .- observed_array) .^ 2)
->>>>>>> Stashed changes
 end

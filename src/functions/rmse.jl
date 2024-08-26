@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-function rmse(simulated_array::AbstractVector, observed_array::AbstractVector; kwargs...)
-    sqrt(sum((observed_array .- simulated_array) .^ (2)) / length(observed_array))
-=======
 @doc"""
     Compute the root mean square error between the simulated and observed data.
 
@@ -36,5 +32,4 @@ function rmse(simulated_array::AbstractVector, observed_array::AbstractVector; k
 """
 function rmse(simulated_array::AbstractVector, observed_array::AbstractVector; kwargs...)
     sqrt(mean((simulated_array .- observed_array) .^ 2))
->>>>>>> Stashed changes
 end

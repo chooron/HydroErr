@@ -29,9 +29,11 @@
       International Journal of Forecasting 22(4) 679-688.
  """
 function mase(simulated_array::AbstractVector, observed_array::AbstractVector; kwargs...)
-    start = m
-    last = simulated_array.size .- m
-    a = mean(abs(simulated_array .- observed_array))
-    b = abs(observed_array[start:observed_array.size] .- observed_array[:last])
-    a ./ (sum(b) ./ last)
+    m = get(kwargs, :m, 1)
+    n = get(kwargs, :m, 1 + 1)
+    start = 1 + m # 0 + 1 
+    last = n - m
+    a = sum(abs(simulated_array .- observed_array))
+    b = n / last * sum(abs(observed_array[start:end] .- observed_array[1:last]))
+    a / b
 end
